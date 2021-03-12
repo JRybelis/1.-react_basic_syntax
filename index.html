@@ -16,10 +16,32 @@
 
     <script type = "text/babel">
         class App extends React.Component {
+            state = {
+                name: 'Fluffy',
+                age: 31
+            }
+            handleClicks = (e) => {
+                console.log(this.state);
+                this.setState({
+                    name: 'Beelz'
+                });
+                console.log(this.state);
+            }
+            handleMouseHovers = (e) => {
+                console.log(e.target, e.pageX);
+            }
+            handleCopy = (e) => {
+                console.log('This has been copied many times already, you will hardly impress anybody.')
+            }
+
             render(){
                 return(
                     <div className = "app-content">
                         <h1>Hello</h1>
+                        <p>My name is: {this.state.name} and I am {this.state.age} years old. </p>
+                        <button onClick = {this.handleClicks}>Click this! </button>
+                        <button onMouseOver = {this.handleMouseHovers}>Hover your mouse over this! </button>
+                        <p onCopy = {this.handleCopy}>A modest destiny awaits!</p>
                     </div>
                 )
             }
