@@ -20,28 +20,42 @@
                 name: 'Fluffy',
                 age: 31
             }
-            handleClicks = (e) => {
+            handleClick = (e) => {
                 console.log(this.state);
                 this.setState({
                     name: 'Beelz'
                 });
                 console.log(this.state);
             }
-            handleMouseHovers = (e) => {
+            handleMouseHover = (e) => {
                 console.log(e.target, e.pageX);
             }
             handleCopy = (e) => {
                 console.log('This has been copied many times already, you will hardly impress anybody.')
             }
+            handleChange = (e) => {
+            	this.setState({
+		            name: e.target.value
+	            });
+            }
+            handleSubmit = (e) => {
+                e.preventDefault();
+                console.log('Form submitted', this.state.name);
+            }
 
             render(){
                 return(
                     <div className = "app-content">
-                        <h1>Hello</h1>
+                        <h1>Hello!</h1>
                         <p>My name is: {this.state.name} and I am {this.state.age} years old. </p>
-                        <button onClick = {this.handleClicks}>Click this! </button>
-                        <button onMouseOver = {this.handleMouseHovers}>Hover your mouse over this! </button>
+                        <button onClick = {this.handleClick}>Click this! </button>
+                        <button onMouseOver = {this.handleMouseHover}>Hover your mouse over this! </button>
                         <p onCopy = {this.handleCopy}>A modest destiny awaits!</p>
+                        <br></br>
+                        <form onSubmit = {this.handleSubmit}>
+                            <input type="text" onChange={this.handleChange}/>
+                            <button>Submit</button>    
+                        </form>
                     </div>
                 )
             }
